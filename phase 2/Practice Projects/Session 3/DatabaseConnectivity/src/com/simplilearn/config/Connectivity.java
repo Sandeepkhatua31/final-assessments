@@ -10,7 +10,7 @@ public class Connectivity {
 		String driver="com.mysql.cj.jdbc.Driver";
 		String url="jdbc:mysql://localhost:3306/simplilearn";
 		String username="root";
-		String password="Rishikesh22";
+		String password="Sandeep123";
 		
 		try {
 			//load driver
