@@ -1,0 +1,650 @@
+﻿<!DOCTYPE html>
+<html>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<head>
+<style>
+    .placebutton {
+        padding-right: auto;
+    }
+    
+    .button {
+        font-size: auto;
+        transition-duration: 0.4s;
+        float:right;
+        
+       
+    }
+        .button:hover {
+            background-color: black;
+        }
+</style>
+    <meta charset="utf-8" />
+    <title>Shop Kitchen Story</title>
+    <link rel="stylesheet" href="Style.css" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <script>
+    function stickyMenu() {
+        var sticky = document.getElementById('sticky');
+        if (window.pageYOffset > 220) {
+            sticky.classList.add('sticky');
+        }
+        else {
+            sticky.classList.remove('sticky');
+        }
+    }
+
+    window.onscroll = function () {
+        stickyMenu();
+    }
+    function searchfunc() {
+        var input, filter, ul, li, a, i;
+        input = document.getElementById("myInput");
+        filter = input.value.toUpperCase();
+        a = document.getElementsByClassName("dropdown-item");
+        for (i = 0; i < a.length; i++) {
+            txtValue = a[i].textContent || a[i].innerText;
+            console.log(1);
+            if (txtValue.toUpperCase().indexOf(filter) > -1 && filter.length != 0) {
+                a[i].style.display = "block";
+            } else {
+                a[i].style.display = "none";
+            }
+        }
+        }
+        var cartinformation = 0;
+
+        function AddtoCart(product) {
+
+            var lb = 1;
+            var price;
+
+            if (cartinformation == "")
+                cartinformation = 1;
+            else
+                cartinformation = 1 + cartinformation;
+
+
+            if (product == "RedBeans") {
+                var e = document.getElementById("redbeansqty");
+                lb = e.options[e.selectedIndex].text;
+                price ='$' + e.options[e.selectedIndex].value * 2;
+                
+            }
+
+            else if ((product == "PintoBeans")) {
+                var e = document.getElementById("pbqty");
+                lb = e.options[e.selectedIndex].text;
+                price = '$' + e.options[e.selectedIndex].value * 3;
+            }
+
+            else if ((product == "BlackBeans")) {
+                var e = document.getElementById("bblb");
+                lb = e.options[e.selectedIndex].text;
+                price = '$' + e.options[e.selectedIndex].value * 3;
+            }
+
+            else if ((product == "Potatoes")) {
+                var e = document.getElementById("potatoesqty");
+                lb = e.options[e.selectedIndex].text;
+                price = '$' + e.options[e.selectedIndex].value * 1;
+            }
+
+            else if ((product == "Onion")) {
+                var e = document.getElementById("onionqty");
+                lb = e.options[e.selectedIndex].text;
+                price = '$' + e.options[e.selectedIndex].value * 3;
+            }
+
+            else if ((product == "Zuccini")) {
+                var e = document.getElementById("zucciniqty");
+                lb = e.options[e.selectedIndex].text;
+                price = '$' + e.options[e.selectedIndex].value * 4;
+            }
+
+            else if ((product == "Apple")) {
+                var e = document.getElementById("appleqty");
+                lb = e.options[e.selectedIndex].text;
+                price = '$' + e.options[e.selectedIndex].value * 3;
+            }
+
+            else if ((product == "Banana")) {
+                var e = document.getElementById("bananaqty");
+                lb = e.options[e.selectedIndex].text;
+                price = '$' + e.options[e.selectedIndex].value * 1;
+            }
+
+            else if ((product == "Kiwi")) {
+                var e = document.getElementById("kiwiqty");
+                lb = e.options[e.selectedIndex].text;
+                price = '$' + e.options[e.selectedIndex].value * 8;
+            }
+
+            else if ((product == "ChickenBreast")) {
+                var e = document.getElementById("cbqty");
+                lb = e.options[e.selectedIndex].text;
+                price = '$' + e.options[e.selectedIndex].value * 5;
+            }
+
+            else if ((product == "ChickenThighs")) {
+                var e = document.getElementById("ctqty");
+                lb = e.options[e.selectedIndex].text;
+                price = '$' + e.options[e.selectedIndex].value * 4;
+            }
+
+            else if ((product == "ChickenDrumsticks")) {
+                var e = document.getElementById("cdqty");
+                lb = e.options[e.selectedIndex].text;
+                price = '$' + e.options[e.selectedIndex].value * 7;
+            }
+            else if ((product == "Almonds")) {
+                var e = document.getElementById("almondsqty");
+                lb = e.options[e.selectedIndex].text;
+                price = '$' + e.options[e.selectedIndex].value * 4;
+            }
+            else if ((product == "Cashew")) {
+                var e = document.getElementById("cashewqty");
+                lb = e.options[e.selectedIndex].text;
+                price = '$' + e.options[e.selectedIndex].value * 5;
+            }
+            else if ((product == "Walnuts")) {
+                var e = document.getElementById("walnutsqty");
+                lb = e.options[e.selectedIndex].text;
+                price = '$' + e.options[e.selectedIndex].value * 8;
+            }
+
+            var newdata = "";
+            var soupdetails = product + "~" + lb + "~" + price;
+            var olddata = sessionStorage.getItem("Cartdetails");
+            if (olddata == null)
+                newdata = soupdetails;
+            else
+                newdata = olddata + ";" + soupdetails;
+
+            
+            sessionStorage.setItem("Cartdetails", newdata);
+
+            document.getElementById('lblCartDetails').innerText = cartinformation;
+        }
+
+    </script>
+
+
+</head>
+<body>
+    <div class="parallax">
+        <div class="page-title">
+            Kitchen Story
+        </div>
+    </div>
+    <div class="menu" id="sticky">
+        <ul class="menu-ul">
+            <a href="#" class="a-menu"><li>Home</li></a>
+            <a href="ShoppingCart.html" class="a-menu"><li>Shopping Cart</li></a>
+            <a href="Login.html" class="a-menu"><li>Login</li></a>
+            <a href="Register.html" class="a-menu"><li>Register</li></a>
+
+        </ul>
+        <div class="search-box" id="myDropdown">
+            <form>
+                <input type="text" placeholder="Search" name="search" class="search-input" id="myInput" onkeyup="searchfunc()" />
+
+                <button type="submit"><i class="fa fa-search"></i></button>
+            </form>
+        </div>
+        <div class="dropdown-content">
+            <ul class="dropdown-list">
+                <li><a href="#beans" class="dropdown-item">Beans</a></li>
+                <li><a href="#vegetables" class="dropdown-item">Vegetables</a></li>
+                <li><a href="#fruits" class="dropdown-item">Fruits</a></li>
+                <li><a href="#meat" class="dropdown-item">Meat</a></li>
+                <li><a href="#nuts" class="dropdown-item">Nuts</a></li>
+                <li><a href="#beans" class="dropdown-item">Red Beans</a></li>
+                <li><a href="#beans" class="dropdown-item">Soya Beans</a></li>
+                <li><a href="#beans" class="dropdown-item">Black Beans</a></li>
+                <li><a href="#vegetables" class="dropdown-item">Potatoes</a></li>
+                <li><a href="#vegetables" class="dropdown-item">Onion</a></li>
+                <li><a href="#vegetables" class="dropdown-item">Tomato</a></li>
+                <li><a href="#fruits" class="dropdown-item">Apple</a></li>
+                <li><a href="#fruits" class="dropdown-item">Kiwi</a></li>
+                <li><a href="#fruits" class="dropdown-item">Banana</a></li>
+                <li><a href="#meat" class="dropdown-item">Mutton</a></li>
+                <li><a href="#meat" class="dropdown-item">Fish</a></li>
+                <li><a href="#meat" class="dropdown-item">Chicken</a></li>
+                <li><a href="#nuts" class="dropdown-item">Almonds</a></li>
+                <li><a href="#nuts" class="dropdown-item">Walnuts</a></li>
+                <li><a href="#nuts" class="dropdown-item">Cashew</a></li>
+                <li><a href="#spice" class="dropdown-item">Black pepper</a></li>
+                <li><a href="#spice" class="dropdown-item">Red chilli powder</a></li>
+                <li><a href="#spice" class="dropdown-item">Haldi powder</a></li>
+
+            </ul>
+        </div>
+    </div>
+    <div class="container">
+        <a href="#beans">
+            <div class="container-categories">
+                <img src="images/beans.jpg" class="item-image" />
+                <div class="image-title">Beans</div>
+            </div>
+        </a>
+        <a href="#vegetables">
+            <div class="container-categories">
+                <img src="images/vegetables.jpg" class="item-image" />
+                <div class="image-title">Vegetables</div>
+            </div>
+        </a>
+        <a href="#fruits">
+            <div class="container-categories">
+                <img src="images/fruits.jpg" class="item-image" />
+                <div class="image-title">Fruits</div>
+            </div>
+        </a>
+        <a href="#meat">
+            <div class="container-categories">
+                <img src="images/chicken.jpg" class="item-image" />
+                <div class="image-title">Meat</div>
+            </div>
+        </a>
+        <a href="#nuts">
+            <div class="container-categories">
+                <img src="images/nuts.jpg" class="item-image" />
+                <div class="image-title">Nuts</div>
+            </div>
+        </a>
+        <a href="#spice">
+            <div class="container-categories">
+                <img src="images/spices.JFIF" class="item-image" />
+                <div class="image-title">Spice</div>
+            </div>
+        </a>
+        
+    </div>
+    <div class="deals-container" id="beans">
+        <div class="parallax">
+            <div class="title">BEANS</div>
+        </div>
+        <div class="items" id="RedBeans">
+            <div class="images">
+                <img src="images/redbeans.jpg" class="item-image-size" />
+            </div>
+            <div class="description">
+                <b>Red Beans</b><br />
+                           <div class="item-select">
+                               Price : RS180/1kg
+                           </div>
+                <label>Qty:</label>
+                <select class="item-select" id="redbeansqty">
+                    <option value="1">1 KG</option>
+                    <option value="2">2 KG</option>
+                    <option value="3">3 KG</option>
+                    <option value="4">4 KG</option>
+                </select><br />
+                <button class="buynow-btn" onclick="AddtoCart('RedBeans')">Add To Cart</button>
+            </div>
+        </div>
+        <div class="items" id="SoyaBeans">
+            <div class="images">
+                <img src="images/SoyaBeans.JPG" class="item-image-size" />
+            </div>
+            <div class="description">
+                <b>Soya Beans</b><br />
+                           <div class="item-select">
+                               Price : RS200/KG
+                           </div>
+                <label>Qty:</label>
+                <select class="item-select" id="pbqty">
+                    <option value="1">1 KG</option>
+                    <option value="2">2 KG</option>
+                    <option value="3">3 KG</option>
+                    <option value="4">4 KG</option>
+                </select><br />
+                         <button class="buynow-btn" onclick="AddtoCart('PintoBeans')">Add To Cart</button>
+            </div>
+        </div>
+        
+
+        <div class="items" id="BlackBeans">
+            <div class="images">
+                <img src="images/blackbeans.jpg" class="item-image-size" />
+            </div>
+            <div class="description">
+                <b>Black Beans</b><br />
+                          <div class="item-select">
+                              Price : RS190/KG
+                          </div>
+                <label>Qty:</label>
+                <select class="item-select" id="bblb">
+                    <option value="1">1 KG</option>
+                    <option value="2">2 KG</option>
+                    <option value="3">3 KG</option>
+                    <option value="4">4 KG</option>
+                </select><br />
+                         <button class="buynow-btn" onclick="AddtoCart('BlackBeans')">Add To Cart</button>
+            </div>
+        </div>
+        <div class="placebutton"><a href="ShoppingCart.html"><input type="submit" class="button" value="Shopping Cart" /></a></div>
+    </div>
+    <div class="deals-container" id="vegetables">
+        <div class="parallax">
+            <div class="title">VEGETABLES</div>
+        </div>
+        <div class="items" id="Potatoes">
+            <div class="images">
+                <img src="images/potatoes.jpg" class="item-image-size" />
+            </div>
+            <div class="description">
+                <b>Potatoes</b><br />
+                             <div class="item-select">
+                                 Price : RS40/KG
+                             </div>
+                <label>Qty:</label>
+                <select class="item-select" id="potatoesqty">
+                    <option value="1">1 KG</option>
+                    <option value="2">2 KG</option>
+                    <option value="3">3 KG</option>
+                    <option value="4">4 KG</option>
+                </select><br />
+                         <button class="buynow-btn" onclick="AddtoCart('Potatoes')">Add To Cart</button>
+            </div>
+        </div>
+        <div class="items" id="Onion">
+            <div class="images">
+                <img src="images/onion.jpg" class="item-image-size" />
+            </div>
+            <div class="description">
+                <b>Onion</b><br />
+                               <div class="item-select">
+                                   Price : RS60/KG
+                               </div>
+                <label>Qty:</label>
+                <select class="item-select" id="onionqty">
+                    <option value="1">1 KG</option>
+                    <option value="2">2 KG</option>
+                    <option value="3">3 KG</option>
+                    <option value="4">4 KG</option>
+                </select><br />
+                         <button class="buynow-btn" onclick="AddtoCart('Onion')">Add To Cart</button>
+            </div>
+        </div>
+        <div class="items" id="Tomato">
+            <div class="images">
+                <img src="images/Tomato.jpg" class="item-image-size" />
+            </div>
+            <div class="description">
+                <b>Tomato</b><br />
+                               <div class="item-select">
+                                   Price : RS40/KG
+                               </div>
+                <label>Qty:</label>
+                <select class="item-select" id="zucciniqty">
+                    <option value="1">1 KG</option>
+                    <option value="2">2 KG</option>
+                    <option value="3">3 KG</option>
+                    <option value="4">4 KG</option>
+                </select><br />
+                         <button class="buynow-btn" onclick="AddtoCart('Zuccini')">Add To Cart</button>
+            </div>
+        </div>
+        <div class="placebutton"><a href="ShoppingCart.html"><input type="submit" class="button" value="Shopping Cart" /></a></div>
+    </div>
+    <div class="deals-container" id="fruits">
+        <div class="parallax">
+            <div class="title">FRUITS</div>
+        </div>
+        <div class="items" id="Apple">
+            <div class="images">
+                <img src="images/apple.jpg" class="item-image-size" />
+            </div>
+            <div class="description">
+                <b>Apple</b><br />
+                            <div class="item-select">
+                                Price : RS220/KG
+                            </div>
+                <label>Qty:</label>
+                <select class="item-select" id="appleqty">
+                    <option value="1">1 KG</option>
+                    <option value="2">2 KG</option>
+                    <option value="3">3 KG</option>
+                    <option value="4">4 KG</option>
+                </select><br />
+                         <button class="buynow-btn" onclick="AddtoCart('Apple')">Add To Cart</button>
+            </div>
+        </div>
+        <div class="items" id="Banana">
+            <div class="images">
+                <img src="images/banana.jpg" class="item-image-size" />
+            </div>
+            <div class="description">
+                <b>Banana</b><br />
+                             <div class="item-select">
+                                 Price : RS70/Dozen
+                             </div>
+                <label>Qty:</label>
+                <select class="item-select" id="bananaqty">
+                    <option value="1">1 Dozen</option>
+                    <option value="2">2 Dozen</option>
+                    <option value="3">3 Dozen</option>
+                    <option value="4">4 Dozen</option>
+                </select><br />
+                         <button class="buynow-btn" onclick="AddtoCart('Banana')">Add To Cart</button>
+            </div>
+        </div>
+        <div class="items" id="Kiwi">
+            <div class="images">
+                <img src="images/kiwi.jpg" class="item-image-size" />
+            </div>
+            <div class="description">
+                <b>Kiwi</b><br />
+                             <div class="item-select">
+                                 Price : RS630/dozen
+                             </div>
+                <label>Qty:</label>
+                <select class="item-select" id="kiwiqty">
+                    <option value="1">1 dozen</option>
+                    <option value="2">2 dozen</option>
+                    <option value="3">3 dozen</option>
+                    <option value="4">4 dozen</option>
+                </select><br />
+                         <button class="buynow-btn" onclick="AddtoCart('Kiwi')">Add To Cart</button>
+            </div>
+        </div>
+        <div class="placebutton"><a href="ShoppingCart.html"><input type="submit" class="button" value="Shopping Cart" /></a></div>
+    </div>
+        <div class="deals-container" id="meat">
+            <div class="parallax">
+                <div class="title">MEAT</div>
+            </div>
+            <div class="items" id="Mutton">
+                <div class="images">
+                    <img src="images/Mutton.jpg" class="item-image-size" />
+                </div>
+                <div class="description">
+                    <b>Mutton</b><br />
+                               <div class="item-select">
+                                   Price : RS600/KG
+                               </div>
+                    <label>Qty:</label>
+                    <select class="item-select" id="cbqty">
+                        <option value="1">1 KG</option>
+                        <option value="2">2 KG</option>
+                        <option value="3">3 KG</option>
+                        <option value="4">4 KG</option>
+                    </select><br />
+                             <button class="buynow-btn" onclick="AddtoCart('Mutton')">Add To Cart</button>
+                </div>
+            </div>
+            <div class="items" id="Fish">
+                <div class="images">
+                    <img src="images/Fish.jpg" class="item-image-size" />
+                </div>
+                <div class="description">
+                    <b>Fish</b><br />
+                                      <div class="item-select">
+                                          Price : RS400/KG
+                                      </div>
+                    <label>Qty:</label>
+                    <select class="item-select" id="ctqty">
+                        <option value="1">1 KG</option>
+                        <option value="2">2 KG</option>
+                        <option value="3">3 KG</option>
+                        <option value="4">4 KG</option>
+                    </select><br />
+                             <button class="buynow-btn" onclick="AddtoCart('Fish')">Add To Cart</button>
+                </div>
+            </div>
+            <div class="items" id="Chicken">
+                <div class="images">
+                    <img src="images/chickendrumsticks.jpg" class="item-image-size" />
+                </div>
+                <div class="description">
+                    <b>Chicken</b><br />
+                                   <div class="item-select">
+                                       Price : RS500/KG
+                                   </div>
+                    <label>Qty:</label>
+                    <select class="item-select" id="cdqty">
+                        <option value="1">1 KG</option>
+                        <option value="2">2 KG</option>
+                        <option value="3">3 KG</option>
+                        <option value="4">4 KG</option>
+                    </select><br />
+                             <button class="buynow-btn" onclick="AddtoCart('Chicken')">Add To Cart</button>
+                </div>
+            </div>
+            <div class="placebutton"><a href="ShoppingCart.html"><input type="submit" class="button" value="Shopping Cart" /></a></div>
+        </div>
+        <div class="deals-container" id="nuts">
+            <div class="parallax">
+                <div class="title">NUTS</div>
+            </div>
+            <div class="items" id="Almonds">
+                <div class="images">
+                    <img src="images/almonds.jpg" class="item-image-size" />
+                </div>
+                <div class="description">
+                    <b>Almonds</b><br />
+                                  <div class="item-select">
+                                      Price : RS1000/KG
+                                  </div>
+                    <label>Qty:</label>
+                    <select class="item-select" id="almondsqty">
+                        <option value="1">1 KG</option>
+                        <option value="2">2 KG</option>
+                        <option value="3">3 KG</option>
+                        <option value="4">4 KG</option>
+                    </select><br />
+                             <button class="buynow-btn" onclick="AddtoCart('Almonds')">Add To Cart</button>
+                </div>
+            </div>
+            <div class="items" id="Cashew">
+                <div class="images">
+                    <img src="images/cashew.jpg" class="item-image-size" />
+                </div>
+                <div class="description">
+                    <b>Cashew</b><br />
+                                 <div class="item-select">
+                                     Price : RS900/KG
+                                 </div>
+                    <label>Qty:</label>
+                    <select class="item-select" id="cashewqty">
+                        <option value="1">1 KG</option>
+                        <option value="2">2 KG</option>
+                        <option value="3">3 KG</option>
+                        <option value="4">4 KG</option>
+                    </select><br />
+                             <button class="buynow-btn" onclick="AddtoCart('Cashew')">Add To Cart</button>
+                </div>
+            </div>
+            <div class="items" id="Walnuts">
+                <div class="images">
+                    <img src="images/walnuts.jpg" class="item-image-size" />
+                </div>
+                <div class="description">
+                    <b>Walnuts</b><br />
+                                  <div class="item-select">
+                                      Price : RS1200/KG
+                                  </div>
+                    <label>Qty:</label>
+                    <select class="item-select" id="walnutsqty">
+                        <option value="1">1 KG</option>
+                        <option value="2">2 KG</option>
+                        <option value="3">3 KG</option>
+                        <option value="4">4 KG</option>
+                    </select><br />
+                             <button class="buynow-btn" onclick="AddtoCart('Walnuts')">Add To Cart</button>
+                </div>
+            </div>
+            <div class="placebutton"><a href="ShoppingCart.html"><input type="submit" class="button" value="Shopping Cart" /></a></div>
+        </div>
+        <div class="deals-container" id="beans">
+            <div class="parallax">
+                <div class="title">SPICE</div>
+            </div>
+            <div class="items" id="Red chilli powder">
+                <div class="images">
+                    <img src="images/chilli powder.jfif" class="item-image-size" />
+                </div>
+                <div class="description">
+                    <b>Red chilli powder</b><br />
+                               <div class="item-select">
+                                   Price : RS120/KG
+                               </div>
+                    <label>Qty:</label>
+                    <select class="item-select" id="redbeansqty">
+                        <option value="1">1 KG</option>
+                        <option value="2">2 KG</option>
+                        <option value="3">3 KG</option>
+                        <option value="4">4 KG</option>
+                    </select><br />
+                    <button class="buynow-btn" onclick="AddtoCart('chilli powder')">Add To Cart</button>
+                </div>
+            </div>
+            <div class="items" id="haldi powder">
+                <div class="images">
+                    <img src="images/haldi powder.PNG" class="item-image-size" />
+                </div>
+                <div class="description">
+                    <b>Haldi powder</b><br />
+                               <div class="item-select">
+                                   Price : RS80/KG
+                               </div>
+                    <label>Qty:</label>
+                    <select class="item-select" id="pbqty">
+                        <option value="1">1 KG</option>
+                        <option value="2">2 KG</option>
+                        <option value="3">3 KG</option>
+                        <option value="4">4 KG</option>
+                    </select><br />
+                             <button class="buynow-btn" onclick="AddtoCart('haldi powder')">Add To Cart</button>
+                </div>
+            </div>
+            <div class="items" id="Blackpepper">
+                <div class="images">
+                    <img src="images/black pepper.jfif" class="item-image-size" />
+                </div>
+                <div class="description">
+                    <b>Black Beans</b><br />
+                              <div class="item-select">
+                                  Price : RS440/KG
+                              </div>
+                    <label>Qty:</label>
+                    <select class="item-select" id="bblb">
+                        <option value="1">1 KG</option>
+                        <option value="2">2 KG</option>
+                        <option value="3">3 KG</option>
+                        <option value="4">4 KG</option>
+                    </select><br />
+                             <button class="buynow-btn" onclick="AddtoCart('black peppers')">Add To Cart</button>
+                </div>
+            </div>
+            <div class="placebutton"><a href="ShoppingCart.html"><input type="submit" class="button" value="Shopping Cart" /></a></div>
+        </div>
+        <div class="footer">
+
+            <div class="copyrights">
+               Sandeepti khatua
+            </div>
+        </div>
+
+</body>
+</html>
